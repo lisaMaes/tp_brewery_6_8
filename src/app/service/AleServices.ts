@@ -28,6 +28,7 @@ export default class AleServices {
 
     let resp: any = await this.ApiService.getAllAles().toPromise();
 
+
     this.alesList = resp.map(item => new Ale(item.id, item.name, item.tagline, item.description, item.image_url, item.brewersTips));
 
 

@@ -1,4 +1,8 @@
 <div>
   <label for="aleNb"></label>
-  <input type="number" name="aleNb" id="aleNb" (change)="handleChange($event)">
+  <input type="number" #inputVariable name="aleNb" id="aleNb" (change)="handleChange(inputVariable.value)">
+</div>
+
+<div>
+  <app-ale-list [alesList]="alesList"></app-ale-list>
 </div>

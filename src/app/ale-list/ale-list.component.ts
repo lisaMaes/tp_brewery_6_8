@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Ale} from "../model/Ale";
 
 @Component({
   selector: 'app-ale-list',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class AleListComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  alesList:Array<Ale>;
 
 
 

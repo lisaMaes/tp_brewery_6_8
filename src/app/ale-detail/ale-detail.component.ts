@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import AleServices from "../service/AleServices";
 import {ActivatedRoute, ParamMap} from "@angular/router";
+import {logging} from "selenium-webdriver";
+import removeConsoleHandler = logging.removeConsoleHandler;
 
 @Component({
   selector: 'app-ale-detail',
@@ -13,16 +15,13 @@ export class AleDetailComponent implements OnInit {
 
   aleItem:any;
 
-  async ngOnInit() {
+   async ngOnInit() {
 
-     this.route.paramMap.subscribe((params: ParamMap)=>{
+     const nbAle:string = await this.route.snapshot.paramMap.get('nbAle');
 
-      this.aleItem = await this.AleServices.getAle(aleNb);
+      this.aleItem = await this.AleServices.getAle(nbAle);
 
-    });
-
+      console.log('detail :',this.aleItem);
   }
-
-
 
 }

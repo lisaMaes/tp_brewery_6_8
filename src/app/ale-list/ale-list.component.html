@@ -1,3 +1,15 @@
-<p>
-  ale-list works!
-</p>
+
+
+<div [ngSwitch]="alesList.length">
+
+  <div *ngSwitchCase="0">Il n'y a aucune bière pour le moment</div>
+  <div *ngSwitchCase="1">Il y a 1 bière à afficher</div>
+  <div *ngSwitchDefault>Il y a {{alesList.length}} bières à afficher</div>
+
+</div>
+
+<ul>
+  <li *ngFor="let ale of alesList; index as i">
+     {{ale.id}} - {{ale.name}}
+  </li>
+</ul>

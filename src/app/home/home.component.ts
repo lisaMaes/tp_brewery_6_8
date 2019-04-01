@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {PATH_DETAIL, PATH_HOME} from "../app.route.constantes";
 import AleServices from "../service/AleServices";
-import {Ale} from "../model/Ale";
 
 @Component({
   selector: 'app-home',
@@ -9,18 +10,20 @@ import {Ale} from "../model/Ale";
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private AleServices: AleServices) { }
 
-  aleItem:any;
-
-  async handleChange(aleNb:string){
-
-    this.aleItem = await this.AleServices.getAle(aleNb);
+  alesList:any []= [];
 
 
+   handleChange(aleNb:string){
+
+    this.router.navigate([PATH_DETAIL, aleNb]);
   }
 
-  ngOnInit() {
-  }
+ async ngOnInit() {
+
+    this.alesList = await this.AleServices.getAllAles();
+
+ }
 
 }
